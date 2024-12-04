@@ -21,7 +21,7 @@ c_LightSensor::c_LightSensor(uint8_t* ipu8SignalDDRegister, uint8_t iu8SignalBit
   UNSET_BIT_IN_REG(*pu8SignalDDRegister, u8SignalBit);
 }
    
-///// FUNCITONS /////
+///// FUNCTIONS /////
 /* function to initiate the light sensors */
 uint8_t f_u8InitializeLightSensors()
 {
