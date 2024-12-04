@@ -25,7 +25,7 @@ uint16_t f_u8GetUltrasonicDistance_cm()
     return 1;
   /* send trigger */
   SET_BIT_IN_REG(PORTC, ULTRASONIC_TRIG_BIT_POS_C_REG);
-  f_u8WaitForMicrosenconds10(2);
+  f_u8WaitForMicroseconds10(2);
   UNSET_BIT_IN_REG(PORTC, ULTRASONIC_TRIG_BIT_POS_C_REG);
   /* wait for echo to rise */
   while (GET_BIT_IN_REG(PINC, ULTRASONIC_ECHO_BIT_POS_C_REG) == 0)
