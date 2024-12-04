@@ -22,7 +22,7 @@ uint8_t f_u8WaitForMilliseconds(uint16_t iu32MillisecondsToWait)
 }
 
 /* function to wait for an amount of 10 microseconds */
-uint8_t f_u8WaitForMicrosenconds10(uint32_t iu32Microseconds10ToWait)
+uint8_t f_u8WaitForMicroseconds10(uint32_t iu32Microseconds10ToWait)
 {
   /* if waitig for 0 seconds return error 1 */
   if (iu32Microseconds10ToWait == 0)
