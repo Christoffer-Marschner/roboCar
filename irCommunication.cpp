@@ -14,7 +14,7 @@ uint8_t f_u8InitializeIrSensor()
 }
 
 /* function to check if an ir message is being sent and get it */
-uint8_t f_u8GetNewestIrMessage(IrMessage_struct* pistructIrMessage)
+uint8_t f_u8GetNewestIrMessage(IrMessage_struct* pissStructIrMessage)
 {
   uint32_t u32SignalDuration_us10;
   uint32_t u32MessageBuf = 0;
@@ -58,12 +58,12 @@ uint8_t f_u8GetNewestIrMessage(IrMessage_struct* pistructIrMessage)
     while (GET_IR_SIGNAL_VALUE() == 1)
     { }
     /* decode message into address and data bytes */
-    pistructIrMessage->u8Address = u32MessageBuf >> 24;
-    pistructIrMessage->u8Data = (u32MessageBuf >> 8) & 0x0000FF;
+    pissStructIrMessage->u8Address = u32MessageBuf >> 24;
+    pissStructIrMessage->u8Data = (u32MessageBuf >> 8) & 0x0000FF;
     /* check if message is corrupted, by comparing address and data bytes with their non counterparts, checking if a valid address was used and checking if a timeout was triggered */
-    pistructIrMessage->u8Valid = false;
-    if ((u32SignalDuration_us10 < IR_TIMEOUT_DURATION_US10) && (pistructIrMessage->u8Address == 0) && (pistructIrMessage->u8Address == (~(u32MessageBuf >> 16) & 0x00FF)) && (pistructIrMessage->u8Data == (~(u32MessageBuf) & 0x000000FF)))
-    { pistructIrMessage->u8Valid = true; }
+    pissStructIrMessage->u8Valid = false;
+    if ((u32SignalDuration_us10 < IR_TIMEOUT_DURATION_US10) && (pissStructIrMessage->u8Address == 0) && (pissStructIrMessage->u8Address == (~(u32MessageBuf >> 16) & 0x00FF)) && (pissStructIrMessage->u8Data == (~(u32MessageBuf) & 0x000000FF)))
+    { pissStructIrMessage->u8Valid = true; }
     /* update the old message */
     u32OldMessageBuf = u32MessageBuf;
     /* return no error 0 */
